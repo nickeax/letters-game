@@ -1,0 +1,98 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--mainFontColor);
+  background-color: var(--mainCompColor);
+  /* background-image: linear-gradient(
+    360deg,
+    rgba(255, 255, 255, 1) 70%,
+    rgba(0, 0, 0, 0.8318102240896359) 100%
+  ); */
+  width: 100%;
+  height: 100%;
+}
+
+.output {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 25vh;
+  font-size: 3rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.24);
+  background-color: var(--mainColor);
+}
+
+.goal {
+  color: var(--mainColor);
+  font-size: 6rem;
+  background-color: #fff;
+  margin: 3rem 3rem 3rem 3rem;
+  padding: 5px 3rem;
+  border: 1px dashed var(--mainFontColor);
+}
+
+.playNumber {
+  text-align: center;
+  margin: 2px;
+  padding: 10px;
+  width: 6rem;
+  border: 1px dashed var(--mainFontColor);
+}
+
+#mobileTag {
+  display: none;
+}
+
+@media only screen and (max-width: 280px) {
+  .output {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px;
+    font-size: 1.3rem;
+  }
+  .goal {
+    font-size: 2rem;
+    padding: 5px;
+    margin: 10px;
+  }
+  .playNumber {
+    width: 1.7rem;
+    padding: 2px;
+  }
+  #mobileTag {
+    color: rgb(255, 238, 0);
+    transform: rotate(-35deg);
+    font-size: 1.4rem;
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .output {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px;
+    font-size: 1.3rem;
+  }
+  .goal {
+    font-size: 2rem;
+    padding: 5px;
+    margin: 10px;
+  }
+  .playNumber {
+    width: 3.7rem;
+    padding: 2px;
+  }
+  #mobileTag {
+    color: rgb(255, 238, 0);
+    transform: rotate(-35deg);
+    font-size: 1.4rem;
+    display: inline-block;
+  }
+}

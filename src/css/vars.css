@@ -1,0 +1,24 @@
+:root {
+  --offset: 8;
+  --mainHue: 260;
+  --mainSat: 70%;
+  --mainNormalLight: 30%;
+  --mainDarkLight: 20%;
+  --mainCompHue: calc(var(--mainHue) + var(--offset));
+
+  --mainDark: hsl(var(--mainHue), var(--mainSat), var(--mainDarkLight));
+
+  --mainColor: hsl(var(--mainHue), var(--mainSat), var(--mainNormalLight));
+  --mainCompColor: hsl(
+    var(--mainCompHue),
+    var(--mainSat),
+    var(--mainNormalLight)
+  );
+  --mainGreen: hsl(120, var(--mainSat), var(--mainDarkLight));
+  --mainRed: hsl(1, var(--mainSat), var(--mainNormalLight));
+  --mainOutlines: rgb(255, 255, 255);
+
+  /* FONT */
+  /* --mainFontColor: hsl(var(--mainHue), var(--mainSpec), 100); */
+  --mainFontColor: rgb(220, 220, 220);
+}

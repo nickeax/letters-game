@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/index.css" />
+    <script src="./src/js/index.js" type="module" defer></script>
+    <title>Just Letters</title>
+  </head>
+  <body>
+    <header>
+      <h5>Just Letters</h5>
+      <span id="mobileTag">MOBILE!</span>
+      <tt
+        style="
+          font-size: 0.9rem;
+          color: rgba(0, 0, 0, 0.316);
+          text-shadow: none;
+          transform: translate(-30px, 15px) rotate(-280deg);
+          z-index: 666;
+        "
+      >
+        &copy; Nick Fletcher 2021
+      </tt>
+    </header>
+    <div class="container">
+      <div class="output" id="output">
+        SET NUMBER OF SMALLS AND CLICK PLAY!
+      </div>
+      <div class="controls" id="controls">
+        <div id="smallsLargeReadout"></div>
+        <div id="btnPlay" class="controls">PLAY</div>
+        <input
+          id="timeLimit"
+          type="number"
+          min="10"
+          max="180"
+          placeholder="set time limit (secs)"
+        />
+        <div id="incDec" class="incDec">
+          <div id="spinnerUp" class="spinnerUp">
+            <i class="arrow up"></i>
+            MORE SMALLS
+          </div>
+
+          <div id="spinnerDown" class="spinnerDown">
+            <i class="arrow down"></i>
+            LESS SMALLS
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
