@@ -1,8 +1,8 @@
 :root {
   --offset: 8;
-  --mainHue: 260;
-  --mainSat: 70%;
-  --mainNormalLight: 30%;
+  --mainHue: 224;
+  --mainSat: 40%;
+  --mainNormalLight: 40%;
   --mainDarkLight: 20%;
   --mainCompHue: calc(var(--mainHue) + var(--offset));
 

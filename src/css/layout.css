@@ -35,7 +35,7 @@
   border: 1px dashed var(--mainFontColor);
 }
 
-.playNumber {
+.playLetter {
   text-align: center;
   margin: 2px;
   padding: 10px;

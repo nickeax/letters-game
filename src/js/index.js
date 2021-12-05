@@ -2,51 +2,46 @@ const output = document.querySelector('#output')
 const controls = document.querySelector('#controls')
 const timeLimit = document.querySelector('#timeLimit')
 const incDec = document.querySelector('#incDec')
-const smallsLargeReadout = document.querySelector('#smallsLargeReadout')
+const letterList = document.querySelector('#letterList')
 const smallNumbers = document.querySelector('#smallNumbers')
 const largeNumbers = document.querySelector('#largeNumbers')
 const btnPlay = document.querySelector('#btnPlay')
-const spinnerUp = document.querySelector('#spinnerUp')
-const spinnerDown = document.querySelector('#spinnerDown')
+const addConsonant = document.querySelector('#addConsonant')
+const addVowel = document.querySelector('#addVowel')
 
-const minGoal = 50
-const maxSmalls = 6
+const VOWELS = ['a', 'e', 'i', 'o', 'u']
+const CONSONANTS = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+
 let seconds = 30
-let smalls = maxSmalls / 2
-let large = maxSmalls / 2
 let countingDown = false
+const MAX_GAME_LETTERS = 9
+let lettersCount = 0
+let gameLetters = ""
+btnPlay.style.display = 'none'
 
 document.addEventListener('click', ev => handleClick(ev))
-writeToInfo(`SMALLS ${smalls} / LARGE ${large}`)
 btnPlay.textContent = "PLAY"
 
 function handleClick(e) {
   e.preventDefault()
   e.stopPropagation()
+
   if (countingDown) return
+
   switch (e.target.id) {
-    case 'spinnerUp':
-      if (smalls < maxSmalls) {
-        smalls++
-        large = maxSmalls - smalls
-      } else {
-        smalls = maxSmalls
-      }
-      writeToInfo(`SMALLS ${smalls} / LARGE ${large}`)
+    case 'addConsonant':
+      if (lettersCount >= MAX_GAME_LETTERS) return
+      generateConsonant()
+      ++lettersCount
       break
-    case 'spinnerDown':
-      if (smalls > 0) {
-        smalls--
-        large = maxSmalls - smalls
-      } else {
-        smalls = 0
-        large = maxSmalls - smalls
-      }
-      writeToInfo(`SMALLS ${smalls} / LARGE ${large}`)
+    case 'addVowel':
+      if (lettersCount >= MAX_GAME_LETTERS) return
+      generateVowels()
+      ++lettersCount
       break
     case 'btnPlay':
+      console.log(`PLAY!`)
       countingDown = true
-      generateNumbers()
       lockElements()
       btnPlay.textContent = 'READY?'
       if (parseInt(timeLimit.value) < 30) {
@@ -65,9 +60,13 @@ function handleClick(e) {
           clearTimeout(iid)
           setTimeout(() => {
             btnPlay.style.color = 'white'
-            btnPlay.textContent = "Play Again"
+            btnPlay.textContent = "Play"
             btnPlay.classList.toggle("alert")
+            gameLetters = ''
+            writeToOutput(gameLetters)
             countingDown = false
+            btnPlay.style.display = 'none'
+            lettersCount = 0
           }, 3000);
         }
         seconds--
@@ -77,18 +76,11 @@ function handleClick(e) {
     default:
       break;
   }
-}
-
-function lockElements() {
-  timeLimit.style.opacity = 0
-  incDec.style.opacity = 0
-  smallsLargeReadout.style.opacity = 0
-}
-
-function unlockElements() {
-  timeLimit.style.opacity = 1.0
-  incDec.style.opacity = 1.0
-  smallsLargeReadout.style.opacity = 1.0
+  if (lettersCount >= MAX_GAME_LETTERS) {
+    btnPlay.style.display = 'block'
+    lockElements()
+    return
+  }
 }
 
 function writeToOutput(inp) {
@@ -96,23 +88,27 @@ function writeToOutput(inp) {
 }
 
 function writeToInfo(inp) {
-  smallsLargeReadout.innerHTML = inp
+  letterList.innerHTML = inp
 }
 
-function generateNumbers() {
-  let nums = ""
-  const largeSet = [25, 50, 75, 100]
-  const smallsSet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+function generateConsonant() {
+  gameLetters += `<span class="playLetter">${CONSONANTS[Math.floor(Math.random() * CONSONANTS.length)].toUpperCase()}</span>`
+  writeToOutput(gameLetters)
+}
 
-  for (let i = 0; i < smalls; i++) {
-    nums += `<span class="playNumber">${smallsSet[Math.floor(Math.random() * smallsSet.length)]}</span>`
-  }
-  // nums += "LARGE: "
-  for (let i = 0; i < large; i++) {
-    nums += `<span class="playNumber">${largeSet[Math.floor(Math.random() * largeSet.length)]}</span>`
-  }
-  let goal = Math.floor(Math.random() * 1000)
-  if (goal > 999) goal = 999
-  nums += `<span class="goal">${goal}</span>`
-  writeToOutput(nums)
+function generateVowels() {
+  gameLetters += `<span class="playLetter">${VOWELS[Math.floor(Math.random() * VOWELS.length)].toUpperCase()}</span>`
+  writeToOutput(gameLetters)
+}
+
+function lockElements() {
+  timeLimit.style.opacity = 0
+  addLetter.style.opacity = 0
+  letterList.style.opacity = 0
+}
+
+function unlockElements() {
+  timeLimit.style.opacity = 1.0
+  addLetter.style.opacity = 1.0
+  letterList.style.opacity = 1.0
 }

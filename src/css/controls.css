@@ -4,16 +4,17 @@
   justify-content: space-around;
   align-items: center;
   width: 50%;
+  height: 20rem;
   padding: 1rem;
   background-color: var(--mainColor);
   margin: 1rem;
 }
 
-.incDec {
+.addLetter {
   float: right;
 }
 
-.incDec {
+.addLetter {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -29,33 +30,33 @@
   padding: 5px;
 }
 
-#smallsLargeReadout {
+#letterList {
   font-size: 2rem;
 }
 
-.spinnerUp,
-.spinnerDown {
+.addConsonant,
+.addVowel {
   padding: 1rem;
   margin: 5px;
   border-radius: 15px;
   color: azure;
 }
 
-.spinnerUp,
-.spinnerDown {
+.addConsonant,
+.addVowel {
   border: solid 2px var(--mainFontColor);
 }
 
-.spinnerUp:hover,
-.spinnerDown:hover {
+.addConsonant:hover,
+.addVowel:hover {
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.2),
     rgba(255, 255, 255, 0.2)
   );
 }
 
-.spinnerUp:active,
-.spinnerDown:active {
+.addConsonant:active,
+.addVowel:active {
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.2),
     rgba(255, 255, 255, 0.2)
@@ -79,7 +80,7 @@
   font-size: 3rem;
   border: 2px solid var(--mainFontColor);
   border-radius: 25%;
-  transition: all 0.05s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
 }
 
 #btnPlay:hover {
@@ -125,7 +126,7 @@ input[type='number']::placeholder {
     width: 100%;
     /* background-color: #333; */
   }
-  .incDec {
+  .addLetter {
     padding: 1px;
   }
 
@@ -136,7 +137,7 @@ input[type='number']::placeholder {
     border-radius: 5px;
   }
 
-  .incDec {
+  .addLetter {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -164,18 +165,18 @@ input[type='number']::placeholder {
     width: 100%;
     /* background-color: #333; */
   }
-  .incDec {
+  .addLetter {
     padding: 1px;
   }
 
-  .spinnerUp,
-  .spinnerDown {
+  .addConsonant,
+  .addVowel {
     padding: 1px;
     margin: 5px;
     border-radius: 5px;
   }
 
-  .incDec {
+  .addLetter {
     position: relative;
     display: flex;
     flex-direction: row;
